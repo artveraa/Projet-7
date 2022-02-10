@@ -1,0 +1,41 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.head .img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.head .searchbar {
+  position: relative;
+}
+.head .searchbar input[type=text] {
+  width: 100%;
+  background-color: #E7E7E7;
+  border: none;
+  border-radius: 5px;
+  padding: 2.4rem;
+  font-size: 1.8rem;
+}
+.head .searchbar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2.4rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  aspect-ratio: 1/1;
+  background-image: url("../assets/svg/search-24px 1.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.head .searchbar::after:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=global.css.map */

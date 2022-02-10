@@ -34,8 +34,5 @@
   background-position: center center;
   background-size: cover;
 }
-.head .searchbar::after:hover {
-  cursor: pointer;
-}
 
 /*# sourceMappingURL=style.css.map */

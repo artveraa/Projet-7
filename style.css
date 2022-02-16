@@ -128,27 +128,4 @@ main .recipes-grid .recipe-card .main .ingredients-steps .ingredients li span {
   font-weight: bolder;
 }
 
-main .select {
-  display: flex;
-  justify-content: space-between;
-}
-main .select__ingredients {
-  background-color: green;
-  padding: 1rem;
-}
-main .icon-container {
-  position: relative;
-  border: solid 1px red;
-}
-main .icon-container .icon::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 15px;
-  height: 1px;
-  background-color: #FFF;
-}
-
 /*# sourceMappingURL=style.css.map */

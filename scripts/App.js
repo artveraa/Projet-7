@@ -4,10 +4,15 @@ class App {
         this.recipeApi = new RecipesApi('../data/recipes.json')
     }
 
-    async main() {
+    async all() {
         const recipes = await this.recipeApi.getRecipes()
+        const recipesArray = []
+        recipesArray.push(recipes)
 
-        recipes.forEach(recipe => {
+        console.log(recipesArray)
+
+        recipesArray
+            .forEach(recipe => {
             const Template = new RecipeCard(recipe)
             this.main.appendChild(Template.createRecipeCard())
         })
@@ -15,4 +20,4 @@ class App {
 }
 
 const app = new App()
-app.main()
+app.all()

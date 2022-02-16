@@ -10,8 +10,8 @@ class RecipeCard {
                 <div class="header"></div>
                 <div class="main">
                     <div class="title-time" >
-                        <div class="title">${this.recipe.name}</div>
-                        <div class="time">${this.recipe.time}</div>
+                        <div class="title">Nom de la recette</div>
+                        <div class="time">10</div>
                     </div>
                     <div class="ingredients-steps">
                         <ul class="ingredients">

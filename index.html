@@ -21,12 +21,28 @@
             </div>
             <div class="col-12">
                 <div class="searchbar">
-                    <input type="text" placeholder="Rechercher une recette">
+                    <input type="search" placeholder="Rechercher une recette">
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<main>
+    <div class="container-xxl">
+        <div class="filters">
+            <input type="search" name="" id="ingredients" class="filter filter__ingredients" placeholder="Ingrédients">
+            <input type="search" name="" id="apparatus" class="filter filter__apparatus" placeholder="Appareils">
+            <input type="search" name="" id="ustensils" class="filter filter__ustensils" placeholder="Ustensiles">
+        </div>
+
+        <section class="recipes-grid"></section>
+    </div>
+</main>
+
+
+<script src="scripts/templates/RecipeCard.js"></script>
+<script src="scripts/api/Api.js"></script>
+<script src="scripts/App.js"></script>
 </body>
 </html>

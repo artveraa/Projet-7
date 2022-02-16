@@ -7,6 +7,7 @@
 
 
 .head {
+
   .img-container {
     width: 100%;
     display: flex;
@@ -16,27 +17,142 @@
   .searchbar {
     position: relative;
 
-    input[type=text] {
+    input[type=search] {
       width: 100%;
       background-color: $grey;
       border: none;
       border-radius: 5px;
       padding: 2.4rem;
       font-size: 1.8rem;
+      background-image: url('../assets/svg/search-24px 1.svg');
+      background-repeat: no-repeat;
+      background-position: calc(100% - 2.4rem) center;
+      outline: none;
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 2.4rem;
-      transform: translateY(-50%);
-      width: 5rem;
-      aspect-ratio: 1 / 1;
-      background-image: url("../assets/svg/search-24px 1.svg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
+    /*&::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 2.4rem;
+        transform: translateY(-50%);
+        width: 5rem;
+        aspect-ratio: 1 / 1;
+        background-image: url("../assets/svg/search-24px 1.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+      }*/
+  }
+}
+
+main {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+
+    .filter {
+      position: relative;
+      padding: 2rem;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      font-size: 1.8rem;
+      color: #FFF;
+
+      &::placeholder {
+        color: #FFF;
+        font-size: 1.8rem;
+
+      }
+
+      &__ingredients {
+        background-color: $blue;
+      }
+
+      &__apparatus {
+        background-color: $green;
+      }
+
+      &__ustensils {
+        background-color: $red;
+      }
+    }
+  }
+
+  .recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+
+    .recipe-card {
+      width: 100%;
+      background-color: #E7E7E7;
+      border-radius: 5px;
+
+      .header {
+        aspect-ratio: 16 / 9;
+        background-color: #C7BEBE;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .main {
+        padding: 2rem;
+
+        .title-time, .ingredients-steps {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .title-time {
+          padding-bottom: 2rem;
+          .title, .time {
+            font-size: 1.8rem;
+          }
+
+          .time {
+            position: relative;
+            font-weight: bolder;
+
+            &::before{
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: -2.5rem;
+              transform: translateY(-50%);
+              width: 2rem;
+              height: 2rem;
+              background-image: url('../assets/svg/watch_later-24px 1.svg');
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: center center;
+
+            }
+          }
+        }
+
+        .ingredients-steps {
+          .ingredients, .steps {
+            width: 50%;
+            font-size: 1.2rem;
+          }
+
+          .ingredients {
+            list-style: none;
+            padding-left: 0;
+
+            li {
+              font-size: 1.2rem;
+              span {
+                font-size: 1.2rem;
+                font-weight: bolder;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

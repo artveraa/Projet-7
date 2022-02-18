@@ -1,21 +1,20 @@
 class App {
     constructor() {
-        this.main = document.querySelector('main')
-        this.recipeApi = new RecipesApi('../data/recipes.json')
+        this.main = document.querySelector('main .container-xxl')
+        this.recipes = recipes;
     }
 
     async all() {
-        const recipes = await this.recipeApi.getRecipes()
-        const recipesArray = []
-        recipesArray.push(recipes)
-
-        console.log(recipesArray)
-
-        recipesArray
-            .forEach(recipe => {
+        let recipeCardsDom = ""
+        this.recipes.forEach(recipe => {
             const Template = new RecipeCard(recipe)
-            this.main.appendChild(Template.createRecipeCard())
+            recipeCardsDom += Template.createRecipeCard()
+
         })
+
+        document.querySelector('.recipes-grid').innerHTML = recipeCardsDom
+
+        console.log(new Search(this.recipes).getSearchBarValue())
     }
 }
 

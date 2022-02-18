@@ -6,7 +6,6 @@ class Api {
     async get() {
         return fetch(this.url)
             .then(res => res.json)
-            .then(res => res.data)
             .catch(err => console.log('Erreur', err))
     }
 }

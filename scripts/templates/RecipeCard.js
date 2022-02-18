@@ -1,36 +1,49 @@
 class RecipeCard {
     constructor(recipe) {
-        this.recipe = recipe
+        this.name = recipe.name
+        this.time = recipe.time
+        this.ingredients = recipe.ingredients
+        this.description = recipe.description
     }
 
     createRecipeCard() {
-        const cardsGrid = document.querySelector('.recipes-grid')
+
         const recipeCard = `
         <article class="recipe-card">
                 <div class="header"></div>
                 <div class="main">
                     <div class="title-time" >
-                        <div class="title">Nom de la recette</div>
-                        <div class="time">10</div>
+                        <div class="title">${this.name}</div>
+                        <div class="time">${this.time}min</div>
                     </div>
                     <div class="ingredients-steps">
                         <ul class="ingredients">
-                            <li><span>Lait de coco: </span>400 ml</li>
-                            <li><span>Jus de citron: </span>2</li>
-                            <li><span>Créme de coco: </span>4 cuillères</li>
-                            <li><span>Sucre: </span>20g</li>
-                            <li><span>Glaçons: </span>2</li>
+                            ${this.ingredients.map(ingredient => this.createIngredient(ingredient)).join("")}
                         </ul>
 
                         <div class="steps">
-                            Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
+                            ${this.description}
                         </div>
                     </div>
                 </div>
             </article>
         `
 
-        cardsGrid.innerHTML = recipeCard
-        return cardsGrid
+        return recipeCard
+    }
+
+    createIngredient(ingredient) {
+        let ingredientDom = `<li><span>${ingredient.ingredient}</span> `
+        if (ingredient.quantity) {
+            ingredientDom += ingredient.quantity + ' '
+        }
+
+        if (ingredient.unit) {
+            ingredientDom += ingredient.unit
+        }
+
+        ingredientDom += `</li>`
+        return ingredientDom
+
     }
 }

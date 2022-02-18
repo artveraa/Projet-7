@@ -128,4 +128,8 @@ main .recipes-grid .recipe-card .main .ingredients-steps .ingredients li span {
   font-weight: bolder;
 }
 
+.hide {
+  display: none;
+}
+
 /*# sourceMappingURL=global.css.map */

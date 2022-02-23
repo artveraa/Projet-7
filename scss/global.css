@@ -12,19 +12,6 @@
 }
 .head .searchbar {
   position: relative;
-  /*&::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 2.4rem;
-      transform: translateY(-50%);
-      width: 5rem;
-      aspect-ratio: 1 / 1;
-      background-image: url("../assets/svg/search-24px 1.svg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-    }*/
 }
 .head .searchbar input[type=search] {
   width: 100%;
@@ -33,10 +20,20 @@
   border-radius: 5px;
   padding: 2.4rem;
   font-size: 1.8rem;
+  outline: none;
+}
+.head .searchbar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2.4rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  aspect-ratio: 1/1;
   background-image: url("../assets/svg/search-24px 1.svg");
   background-repeat: no-repeat;
-  background-position: calc(100% - 2.4rem) center;
-  outline: none;
+  background-position: center center;
+  background-size: cover;
 }
 
 main .filters {

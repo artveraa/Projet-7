@@ -24,13 +24,10 @@
       border-radius: 5px;
       padding: 2.4rem;
       font-size: 1.8rem;
-      background-image: url('../assets/svg/search-24px 1.svg');
-      background-repeat: no-repeat;
-      background-position: calc(100% - 2.4rem) center;
       outline: none;
     }
 
-    /*&::after {
+    &::after {
         content: '';
         position: absolute;
         top: 50%;
@@ -42,7 +39,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-      }*/
+      }
   }
 }
 

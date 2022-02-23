@@ -6,14 +6,14 @@ class Search {
 
     }
 
-    getSearchBarValue() {
+    filterRecipes() {
         this.searchBar.addEventListener('input', e => {
             const value = e.target.value
 
 
             this.recipes.filter(recipe => {
                 if (recipe.name.includes(value)){
-                    console.log(recipe)
+
                 } else {
 
                 }

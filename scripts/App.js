@@ -5,8 +5,11 @@ class App {
 
     async init() {
         new RecipesList(this.recipes).createRecipesList()
-
+        new SearchData(this.recipes).searchData()
         new FilterData(this.recipes).filterData()
+
+        console.log(new SearchData(this.recipes).getIngredients())
+
     }
 }
 

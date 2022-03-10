@@ -31,9 +31,24 @@
 <main>
     <div class="container-xxl">
         <div class="filters">
-            <input type="search" name="" id="ingredients" class="filter filter__ingredients" placeholder="Ingrédients">
-            <input type="search" name="" id="apparatus" class="filter filter__apparatus" placeholder="Appareils">
-            <input type="search" name="" id="ustensils" class="filter filter__ustensils" placeholder="Ustensiles">
+            <div class="filter filter__ingredients">
+                <input type="search" name="" id="ingredients" class="filter-searchbar" placeholder="Ingrédients">
+                <ul class="filter-list">
+
+                </ul>
+            </div>
+            <div class="filter filter__appliance">
+                <input type="search" name="" id="appliance" class="filter-searchbar" placeholder="Appareils">
+                <ul class="filter-list">
+
+                </ul>
+            </div>
+            <div class="filter filter__ustensils">
+                <input type="search" name="" id="ustensils" class="filter-searchbar" placeholder="Ustensiles">
+                <ul class="filter-list">
+
+                </ul>
+            </div>
         </div>
 
         <section class="recipes-grid"></section>
@@ -45,7 +60,6 @@
 <script src="scripts/templates/RecipesList.js"></script>
 <!--<script src="scripts/api/Api.js"></script>-->
 <script src="scripts/utils/SearchData.js"></script>
-<script src="scripts/utils/FilterData.js"></script>
-<script src="scripts/App.js"></script>
+<script src="scripts/App.js" type="module"></script>
 </body>
 </html>

@@ -1,15 +1,15 @@
+import Filter from "./utils/Filter.js";
+
 class App {
     constructor() {
         this.recipes = recipes;
+        this.filter = new Filter()
     }
 
     async init() {
         new RecipesList(this.recipes).createRecipesList()
-        new SearchData(this.recipes).searchData()
-        new FilterData(this.recipes).filterData()
-
-        console.log(new SearchData(this.recipes).getIngredients())
-
+        new SearchData(this.recipes, this.filter).searchData()
+        this.filter.updateAllLists(this.recipes)
     }
 }
 

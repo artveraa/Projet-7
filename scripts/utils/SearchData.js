@@ -1,8 +1,9 @@
 class SearchData {
-    constructor(recipes) {
+    constructor(recipes, filter) {
         this.searchBar = document.querySelector('.searchbar')
         this.recipes = recipes
-        this.ingredients = this.getIngredients()
+        this.filter = filter
+
     }
 
 
@@ -12,28 +13,17 @@ class SearchData {
 
             let value = e.target.value.toLowerCase()
             if (value.length >= 3) {
-                const filteredArray = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(value) || recipe.description.toLowerCase().includes(value))
+                const filteredArray = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(value) ||
+                                                                    recipe.description.toLowerCase().includes(value) ||
+                                                                    recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value)))
                 new RecipesList(filteredArray).createRecipesList()
+                this.filter.updateAllLists(filteredArray)
             } else {
                 new RecipesList(this.recipes).createRecipesList()
+                this.filter.updateAllLists(this.recipes)
             }
         })
     }
-
-    getIngredients(){
-        const allIngredients = []
-        this.recipes.forEach(recipe => {
-            recipe.ingredients.forEach(ingredient => {
-                allIngredients.push(ingredient.ingredient)
-
-            })
-        })
-
-        allIngredients.sort()
-        const sortIngredients = new Set(allIngredients)
-        return sortIngredients
-    }
-
 
 
 }

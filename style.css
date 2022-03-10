@@ -12,19 +12,6 @@
 }
 .head .searchbar {
   position: relative;
-  /*&::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: 2.4rem;
-      transform: translateY(-50%);
-      width: 5rem;
-      aspect-ratio: 1 / 1;
-      background-image: url("../assets/svg/search-24px 1.svg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-    }*/
 }
 .head .searchbar input[type=search] {
   width: 100%;
@@ -33,39 +20,89 @@
   border-radius: 5px;
   padding: 2.4rem;
   font-size: 1.8rem;
+  outline: none;
+}
+.head .searchbar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2.4rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  aspect-ratio: 1/1;
   background-image: url("../assets/svg/search-24px 1.svg");
   background-repeat: no-repeat;
-  background-position: calc(100% - 2.4rem) center;
-  outline: none;
+  background-position: center center;
+  background-size: cover;
 }
 
 main .filters {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 2rem;
   margin-bottom: 2.5rem;
 }
 main .filters .filter {
   position: relative;
   padding: 2rem;
-  border: none;
   border-radius: 5px;
-  outline: none;
   font-size: 1.8rem;
   color: #FFF;
 }
-main .filters .filter::placeholder {
+main .filters .filter .filter-searchbar {
+  border: none;
+  outline: none;
+}
+main .filters .filter .filter-searchbar::placeholder {
   color: #FFF;
   font-size: 1.8rem;
+}
+main .filters .filter .filter-list {
+  display: none;
 }
 main .filters .filter__ingredients {
   background-color: #3282F7;
 }
-main .filters .filter__apparatus {
+main .filters .filter__ingredients .filter-searchbar {
+  background-color: #3282F7;
+}
+main .filters .filter__appliance {
+  background-color: #68D9A4;
+}
+main .filters .filter__appliance .filter-searchbar {
   background-color: #68D9A4;
 }
 main .filters .filter__ustensils {
   background-color: #ED6454;
+}
+main .filters .filter__ustensils .filter-searchbar {
+  background-color: #ED6454;
+}
+main .filters .filter__open {
+  width: 30%;
+  position: relative;
+  border-radius: 5px 5px 0 0;
+}
+main .filters .filter__open .filter-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem;
+  background-color: #3282F7;
+  border-radius: 0 0 5px 5px;
+  z-index: 2;
+}
+main .filters .filter__open .filter-list li {
+  list-style: none;
+  font-size: 1.1rem;
+  height: fit-content;
+}
+main .filters .filter__open .filter-list li:hover {
+  cursor: pointer;
 }
 main .recipes-grid {
   display: grid;
@@ -126,6 +163,10 @@ main .recipes-grid .recipe-card .main .ingredients-steps .ingredients li {
 main .recipes-grid .recipe-card .main .ingredients-steps .ingredients li span {
   font-size: 1.2rem;
   font-weight: bolder;
+}
+
+.hide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

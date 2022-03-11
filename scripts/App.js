@@ -4,6 +4,7 @@ class App {
     constructor() {
         this.recipes = recipes;
         this.filter = new Filter()
+
     }
 
     async init() {

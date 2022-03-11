@@ -1,10 +1,8 @@
 export default class Filter {
     constructor() {
-        this.listIngredients = []
-        this.listUstensils = []
-        this.listAppliance = []
         this.listFilter = ['Ingredients', 'Ustensils', 'Appliance']
         this.bindEvent()
+
     }
 
     updateList(recipes, list) {
@@ -26,13 +24,15 @@ export default class Filter {
                 })
                 break;
         }
+
         this["list" + list] = [...new Set(result)];
+
     }
 
     showList(list) {
         let listDOM = ""
         this["list" + list].forEach(element => {
-            listDOM += `<li>${element}</li>`
+            listDOM += `<li class="filter-elem">${element}</li>`
         })
         document.querySelector(`.filter__${list.toLowerCase()} .filter-list`).innerHTML = listDOM
 
@@ -50,9 +50,9 @@ export default class Filter {
             document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('focus', evt => {
                 evt.currentTarget.closest('.filter').classList.add('filter__open')
             })
-            document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('blur', evt => {
+            /*document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('blur', evt => {
                 evt.currentTarget.closest('.filter').classList.remove('filter__open')
-            })
+            })*/
         })
 
     }

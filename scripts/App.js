@@ -9,8 +9,8 @@ class App {
 
     async init() {
         new RecipesList(this.recipes).createRecipesList()
-        new SearchData(this.recipes, this.filter).searchData()
-        this.filter.updateAllLists(this.recipes)
+        new SearchData(this.recipes, this.filter).bindEvent()
+        this.filter.updateAllLists(this.recipes, [])
     }
 }
 

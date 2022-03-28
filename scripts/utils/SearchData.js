@@ -3,67 +3,104 @@ class SearchData {
         this.searchBar = document.querySelector('.searchbar')
         this.recipes = recipes
         this.filter = filter
+        this.tagsArray = []
 
     }
 
 
-    searchData() {
+    searchData(value) {
 
+        value = value.toLowerCase()
+
+        return this.recipes.filter(recipe => recipe.name.toLowerCase().includes(value) ||
+            recipe.description.toLowerCase().includes(value) ||
+            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value)))
+    }
+
+    filterData() {
+        this.ultraFilterRecipes = this.filterRecipes.filter(recipe => true)
+        this.tagsArray.forEach(tag => {
+            switch (tag.type) {
+                case 'Ingredients':
+                    this.ultraFilterRecipes = this.ultraFilterRecipes.filter(recipe => recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase() == tag.value.toLowerCase()))
+                    break;
+                case 'Ustensils':
+                    this.ultraFilterRecipes = this.ultraFilterRecipes.filter(recipe => recipe.ustensils.some(ustensil => ustensil.toLowerCase() == tag.value.toLowerCase()))
+                    break;
+                case 'Appliance':
+                    this.ultraFilterRecipes = this.ultraFilterRecipes.filter(recipe => recipe.appliance.toLowerCase() == tag.value.toLowerCase())
+                    break;
+            }
+
+
+        })
+
+    }
+
+    bindEvent() {
         this.searchBar.addEventListener('input', e => {
 
-            let value = e.target.value.toLowerCase()
-            if (value.length >= 3) {
-                const filteredArray = this.recipes.filter(recipe => recipe.name.toLowerCase().includes(value) ||
-                    recipe.description.toLowerCase().includes(value) ||
-                    recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value)))
-                new RecipesList(filteredArray).createRecipesList()
-                this.filter.updateAllLists(filteredArray)
-                this.selectFiltersTags(this.filter)
-
-            } else {
-                new RecipesList(this.recipes).createRecipesList()
-                this.filter.updateAllLists(this.recipes)
-
+            if (e.target.value.length >= 3) {
+                this.filterRecipes = this.searchData(e.target.value)
+                new RecipesList(this.filterRecipes).createRecipesList()
+                this.filter.updateAllLists(this.filterRecipes, this.tagsArray)
+                this.selectFiltersTags()
             }
         })
     }
 
-    selectFiltersTags(filter) {
+    selectFiltersTags() {
         let updatedFilters = document.querySelectorAll('.filter-list .filter-elem')
 
 
         updatedFilters.forEach(el => {
-            el.addEventListener('click', e => {
-                this.buildTag(el.innerHTML);
-
-                if(this.deleteTag()){
-                    el.classList.remove('delete');
-                } else {
-                    el.classList.add('delete');
-                }
+            el.addEventListener('click', () => {
+                this.buildTag({
+                    type: el.dataset.type,
+                    value: el.innerHTML
+                });
+                this.tagsArray.push({
+                    type: el.dataset.type,
+                    value: el.innerHTML
+                })
+                this.filterData()
+                this.deleteTag()
+                new RecipesList(this.ultraFilterRecipes).createRecipesList()
+                this.filter.updateAllLists(this.ultraFilterRecipes, this.tagsArray)
+                this.selectFiltersTags()
             })
         })
+
+
     }
 
     buildTag(selectedFilter) {
         this.tagsContainer = document.querySelector('.tags')
+
         const tag = `
-             <li class="tag">
-                <p class="tag__name">${selectedFilter}</p>
+             <li class="tag" data-type="${selectedFilter.type}">
+                <p class="tag__name">${selectedFilter.value}</p>
                 <div class="tag__close-icon"></div>
              </li>
         `
         this.tagsContainer.innerHTML += tag
+
     }
 
-    deleteTag(){
-        const tag = document.querySelectorAll('.tag')
-        tag.forEach(el => {
-            el.querySelector('.tag__close-icon').addEventListener('click', () => {
-                    el.style.display = 'none'
-
-                })
+    deleteTag() {
+        document.querySelectorAll('.tag .tag__close-icon').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                let currentTag = e.currentTarget.closest(".tag")
+                this.tagsArray = this.tagsArray.filter(tag => tag.type != currentTag.dataset.type || tag.value != currentTag.querySelector('.tag__name').innerHTML)
+                this.filterData()
+                this.deleteTag()
+                new RecipesList(this.ultraFilterRecipes).createRecipesList()
+                this.filter.updateAllLists(this.ultraFilterRecipes, this.tagsArray)
+                this.selectFiltersTags()
+                currentTag.remove()
+            })
         })
+
     }
 
 

@@ -31,10 +31,7 @@ class SearchData {
                     this.ultraFilterRecipes = this.ultraFilterRecipes.filter(recipe => recipe.appliance.toLowerCase() == tag.value.toLowerCase())
                     break;
             }
-
-
         })
-
     }
 
     bindEvent() {
@@ -63,6 +60,7 @@ class SearchData {
                     type: el.dataset.type,
                     value: el.innerHTML
                 })
+
                 this.filterData()
                 this.deleteTag()
                 new RecipesList(this.ultraFilterRecipes).createRecipesList()
@@ -70,9 +68,8 @@ class SearchData {
                 this.selectFiltersTags()
             })
         })
-
-
     }
+
 
     buildTag(selectedFilter) {
         this.tagsContainer = document.querySelector('.tags')

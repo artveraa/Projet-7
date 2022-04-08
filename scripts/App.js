@@ -11,6 +11,7 @@ class App {
         new RecipesList(this.recipes).createRecipesList()
         new SearchData(this.recipes, this.filter).bindEvent()
         this.filter.updateAllLists(this.recipes, [])
+
     }
 }
 

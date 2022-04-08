@@ -107,6 +107,7 @@ main .filters .filter {
 main .filters .filter .filter-searchbar {
   border: none;
   outline: none;
+  color: #FFF;
 }
 main .filters .filter .filter-searchbar::placeholder {
   color: #FFF;
@@ -115,10 +116,16 @@ main .filters .filter .filter-searchbar::placeholder {
 main .filters .filter .filter-list {
   display: none;
 }
+main .filters .filter .filter-list .filter-elem.hide {
+  display: none;
+}
 main .filters .filter__ingredients {
   background-color: #3282F7;
 }
 main .filters .filter__ingredients .filter-searchbar {
+  background-color: #3282F7;
+}
+main .filters .filter__ingredients .filter-list {
   background-color: #3282F7;
 }
 main .filters .filter__appliance {
@@ -127,10 +134,16 @@ main .filters .filter__appliance {
 main .filters .filter__appliance .filter-searchbar {
   background-color: #68D9A4;
 }
+main .filters .filter__appliance .filter-list {
+  background-color: #68D9A4;
+}
 main .filters .filter__ustensils {
   background-color: #ED6454;
 }
 main .filters .filter__ustensils .filter-searchbar {
+  background-color: #ED6454;
+}
+main .filters .filter__ustensils .filter-list {
   background-color: #ED6454;
 }
 main .filters .filter__open {
@@ -146,7 +159,6 @@ main .filters .filter__open .filter-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 2rem;
-  background-color: #3282F7;
   border-radius: 0 0 5px 5px;
   z-index: 2;
 }

@@ -2,7 +2,6 @@ export default class Filter {
     constructor() {
         this.listFilter = ['Ingredients', 'Ustensils', 'Appliance']
         this.bindEvent()
-
     }
 
     updateList(recipes, list, tagsArray) {
@@ -27,7 +26,6 @@ export default class Filter {
         }
 
         this["list" + list] = [...new Set(result)];
-
     }
 
     showList(list) {
@@ -35,28 +33,49 @@ export default class Filter {
         this["list" + list].forEach(element => {
             listDOM += `<li class="filter-elem" data-type="${list}">${element}</li>`
         })
-        document.querySelector(`.filter__${list.toLowerCase()} .filter-list`).innerHTML = listDOM
 
+        document.querySelector(`.filter__${list.toLowerCase()} .filter-list`).innerHTML = listDOM
     }
 
     updateAllLists(recipe, tagsArray) {
         this.listFilter.forEach(list => {
             this.updateList(recipe, list, tagsArray.filter(tag => tag.type == list));
             this.showList(list);
+
         })
+
     }
 
-    bindEvent(){
+    bindEvent() {
         this.listFilter.forEach(list => {
             document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('focus', evt => {
                 evt.currentTarget.closest('.filter').classList.add('filter__open')
 
             })
+
+            document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('keyup', evt => {
+                this.searchFilterList(evt.currentTarget.value, evt.currentTarget.id[0].toUpperCase() + evt.currentTarget.id.slice(1).toLowerCase())
+            })
+
+
             /*document.querySelector(`.filter__${list.toLowerCase()} input`).addEventListener('blur', evt => {
                 evt.currentTarget.closest('.filter').classList.remove('filter__open')
             })*/
         })
 
     }
+
+    searchFilterList(value, list) {
+
+            let result = this["list" + list].filter(tag => tag.toLowerCase().includes(value.toLowerCase()))
+            document.querySelectorAll(`.filter__${list.toLowerCase()} .filter-list .filter-elem`).forEach(el => {
+                if (result.includes(el.innerHTML)) {
+                    el.classList.remove('hide');
+                } else {
+                    el.classList.add('hide');
+                }
+            })
+    }
+
 
 }

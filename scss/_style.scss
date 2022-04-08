@@ -89,17 +89,17 @@ main {
           background-color: #fff;
         }
 
-        &::after{
+        &::after {
           transform: translate(-50%, -50%) rotate(50deg);
           transform-origin: center;
         }
 
-        &::before{
+        &::before {
           transform: translate(-50%, -50%) rotate(-50deg);
           transform-origin: center;
         }
 
-        &:hover{
+        &:hover {
           cursor: pointer;
         }
       }
@@ -123,6 +123,7 @@ main {
       .filter-searchbar {
         border: none;
         outline: none;
+        color: #FFF;
 
         &::placeholder {
           color: #FFF;
@@ -132,6 +133,10 @@ main {
 
       .filter-list {
         display: none;
+
+        .filter-elem.hide {
+          display: none;
+        }
       }
 
 
@@ -139,6 +144,10 @@ main {
         background-color: $blue;
 
         .filter-searchbar {
+          background-color: $blue;
+        }
+
+        .filter-list{
           background-color: $blue;
         }
 
@@ -150,12 +159,20 @@ main {
         .filter-searchbar {
           background-color: $green;
         }
+
+        .filter-list{
+          background-color: $green;
+        }
       }
 
       &__ustensils {
         background-color: $red;
 
         .filter-searchbar {
+          background-color: $red;
+        }
+
+        .filter-list{
           background-color: $red;
         }
       }
@@ -173,7 +190,6 @@ main {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           padding: 2rem;
-          background-color: $blue;
           border-radius: 0 0 5px 5px;
           z-index: 2;
 
@@ -181,7 +197,6 @@ main {
             list-style: none;
             font-size: 1.1rem;
             height: fit-content;
-
 
 
             &:hover {
@@ -193,7 +208,6 @@ main {
       }
     }
   }
-
 
 
   .recipes-grid {

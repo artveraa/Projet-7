@@ -4,17 +4,25 @@ class SearchData {
         this.recipes = recipes
         this.filter = filter
         this.tagsArray = []
-
     }
 
 
     searchData(value) {
 
         value = value.toLowerCase()
+        this.result = []
 
-        return this.recipes.filter(recipe => recipe.name.toLowerCase().includes(value) ||
-            recipe.description.toLowerCase().includes(value) ||
-            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value)))
+
+        for(let recipe of this.recipes) {
+            if(recipe.name.toLowerCase().includes(value) || recipe.description.toLowerCase().includes(value) || recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value))){
+                this.result.push(recipe)
+            }
+        }
+
+        this.recipes = this.result
+        return this.recipes
+
+
     }
 
     filterData() {
